@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Aplicacion_Simulador_Consola.Clases;
 
 namespace Aplicacion_Simulador_Consola
 {
@@ -10,6 +11,10 @@ namespace Aplicacion_Simulador_Consola
     {
         static void Main(string[] args)
         {
+            Terminal winTerminal = new Terminal();
+            
+
+            Console.Read();
         }
     }
 }
