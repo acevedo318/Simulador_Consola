@@ -51,6 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Clases\Comando.cs" />
     <Compile Include="Clases\Terminal.cs" />
     <Compile Include="Clases\TerminalUsuario.cs" />
     <Compile Include="Program.cs" />

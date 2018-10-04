@@ -84,7 +84,7 @@ namespace Aplicacion_Simulador_Consola.Clases
         {
             bool validar = false;
             Console.WriteLine("Bienvenido");
-            Console.WriteLine("Para el primer uso de la consola es necesario su nombre de usuario");
+            Console.WriteLine("Para el primer uso del Terminal es necesario su nombre de usuario");
             
             do
             {
@@ -133,7 +133,7 @@ namespace Aplicacion_Simulador_Consola.Clases
             Console.WriteLine();
         }
 
-        private void Cargando()
+        public static void Cargando()
         {
             
             Console.Write("Cargando: ");
@@ -147,7 +147,7 @@ namespace Aplicacion_Simulador_Consola.Clases
             Console.Clear();
         }
 
-        private void Espera(int decimasegundos)
+        static void Espera(int decimasegundos)
         {
             System.Threading.Thread.Sleep((decimasegundos*100));
         }

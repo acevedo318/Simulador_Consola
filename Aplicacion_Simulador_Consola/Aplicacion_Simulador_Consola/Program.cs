@@ -13,8 +13,6 @@ namespace Aplicacion_Simulador_Consola
         {
             Terminal winTerminal = new Terminal();
             
-
-            Console.Read();
         }
     }
 }
