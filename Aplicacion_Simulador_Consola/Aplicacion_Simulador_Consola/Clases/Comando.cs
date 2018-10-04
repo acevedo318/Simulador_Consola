@@ -6,6 +6,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Aplicacion_Simulador_Consola.Clases
 {
@@ -102,7 +103,11 @@ namespace Aplicacion_Simulador_Consola.Clases
         {
             if (data.Count() > 1)
             {
-                ComandoInvalido(data[0]);
+                if (data[1] == "volver")
+                {
+                    DirectoryInfo info = new DirectoryInfo(this.directorioLocal);
+                    
+                }
             }
             else
             {
@@ -137,9 +142,12 @@ namespace Aplicacion_Simulador_Consola.Clases
             Console.ResetColor();
         }
 
-        public void ayuda()
+        public void ayuda(string[] data)
         {
-            StreamReader objReader = new StreamReader("c:\\test.txt");
+            StreamReader objReader = new StreamReader(Application.StartupPath);
+            string sLine = "";
+            sLine = objReader.ReadToEnd();
+            Console.WriteLine(sLine);
         }
 
         /// <summary>
