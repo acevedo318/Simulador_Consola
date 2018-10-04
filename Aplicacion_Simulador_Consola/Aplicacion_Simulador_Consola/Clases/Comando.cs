@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -12,11 +14,12 @@ namespace Aplicacion_Simulador_Consola.Clases
     /// </summary>
     public class Comando
     {
-        public enum ListaComandos {Listar,ver,ayuda,Limpiar,Terminal}
+        public enum ListaComandos {Listar,ver,ayuda,Limpiar,Terminal,Explorador,Abrir}
         public string[] cadenaDatas = {"","",""};
-        public Comando()
+        private string directorioLocal = "";
+        public Comando(string directorioLocal)
         {
-
+            this.directorioLocal = directorioLocal;
         }
 
         public void Buscar(string data)
@@ -53,12 +56,26 @@ namespace Aplicacion_Simulador_Consola.Clases
         }
             
 
-
+        /// <summary>
+        /// Lista las carpetas y archivos en el directorio
+        /// </summary>
+        /// <param name="data">opciones o directorio</param>
         public void Listar(string[] data)
         {
             if (data.Count() <= 2)
             {
-                Console.WriteLine("Listando");
+                try
+                {
+                    listar(data);
+                }
+                catch (Exception)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Directorio no valido");
+                    Console.ResetColor();
+                }
+                
+                
             }
             else
             {
@@ -69,7 +86,33 @@ namespace Aplicacion_Simulador_Consola.Clases
 
         public void Limpiar(string[] data)
         {
-            Console.Clear();
+            if (data.Count()>1)
+            {
+                ComandoInvalido(data[0]);
+            }
+            else
+            {
+                Console.Clear();
+            }
+            
+            
+        }
+
+        public void Abrir(string[] data)
+        {
+            if (data.Count() > 1)
+            {
+                ComandoInvalido(data[0]);
+            }
+            else
+            {
+                ComandoInvalido(data[0]);
+            }
+        }
+
+        public void Explorador(string[] data)
+        {
+            Process.Start("explorer.exe", this.directorioLocal);
         }
 
         public void Terminal(string[] data)
@@ -90,8 +133,69 @@ namespace Aplicacion_Simulador_Consola.Clases
         private void ComandoInvalido(string comando)
         {
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("Opcion Invalida puede usar {0} help para mas informacion de este comando",comando);
+            Console.WriteLine("Opcion Invalida puede usar {0} ayuda para mas informacion de este comando",comando);
             Console.ResetColor();
+        }
+
+        public void ayuda()
+        {
+            StreamReader objReader = new StreamReader("c:\\test.txt");
+        }
+
+        /// <summary>
+        /// funcion de Listar
+        /// </summary>
+        /// <param name="data"></param>
+        private void listar(string[] data)
+        {
+            if (data.Count() == 1)
+            {
+                Console.ForegroundColor = ConsoleColor.Blue;
+                string[] Paths = Directory.GetDirectories(this.directorioLocal, "*", SearchOption.TopDirectoryOnly);
+
+                Console.WriteLine("Carpetas");
+                Console.WriteLine();
+                foreach (var item in Paths)
+                {
+                    Console.WriteLine(item.Split('\\').GetValue(item.Split('\\').Length - 1));
+                }
+                Console.WriteLine();
+
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("Archivos");
+                Console.WriteLine();
+                string[] filePaths = Directory.GetFiles(this.directorioLocal, "*", SearchOption.TopDirectoryOnly);
+                foreach (var item in filePaths)
+                {
+                    Console.WriteLine(item);
+                }
+                Console.WriteLine();
+                Console.ResetColor();
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.Blue;
+                string[] Paths = Directory.GetDirectories(this.directorioLocal + @"\" + data[1], "*", SearchOption.TopDirectoryOnly);
+
+                Console.WriteLine("Carpetas");
+                Console.WriteLine();
+                foreach (var item in Paths)
+                {
+                    Console.WriteLine(item.Split('\\').GetValue(item.Split('\\').Length - 1));
+                }
+                Console.WriteLine();
+
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("Archivos");
+                Console.WriteLine();
+                string[] filePaths = Directory.GetFiles(this.directorioLocal + @"\" + data[1], "*", SearchOption.TopDirectoryOnly);
+                foreach (var item in filePaths)
+                {
+                    Console.WriteLine(item);
+                }
+                Console.WriteLine();
+                Console.ResetColor();
+            }
         }
 
 

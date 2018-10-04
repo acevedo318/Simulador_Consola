@@ -22,23 +22,34 @@ namespace Aplicacion_Simulador_Consola.Clases
             this.nombreUsuario = nombreUsuario;
             this.direccionUbicacion = direccionUbicacion;
             Console.Clear();
-            Console.Write(GetPrompt());
+            GetPrompt();
             Comandos();
  
         }
 
-
-        private string GetPrompt()
+        /// <summary>
+        /// // Nombre Maquina,nombre Usuario, Ubicacion Comando
+        /// </summary>
+        private void GetPrompt()
         {
             Console.WriteLine();
-            return Maquina + "@" + this.nombreUsuario + ":~$ "; // Nombre Maquina,nombre Usuario, Ubicacion Comando
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.Write(Maquina);
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.Write("@");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.Write(this.nombreUsuario);
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.Write(":~$ ");
+            Console.ResetColor();
+            
         }
 
         private void Comandos()
         {
             string data = "";
             bool salir = false;
-            Comando comando = new Comando();
+            Comando comando = new Comando(this.direccionUbicacion);
             
             do
             {
@@ -54,7 +65,7 @@ namespace Aplicacion_Simulador_Consola.Clases
                 {
                     Console.WriteLine();
                     comando.Buscar(data);
-                    Console.Write(GetPrompt());
+                    GetPrompt();
                     
                 }
                 
