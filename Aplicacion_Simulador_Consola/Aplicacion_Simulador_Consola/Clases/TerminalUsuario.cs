@@ -72,26 +72,11 @@ namespace Aplicacion_Simulador_Consola.Clases
             } while (!salir);
 
         }
-
-
-        /*
+#if true
         
-         string data = "";
-            DirectoryInfo Dir = new DirectoryInfo(@"c:\Users\kevin\Documents\GitHub\Simulador_Consola\Aplicacion_Simulador_Consola\Aplicacion_Simulador_Consola\bin\Debug\C");
-            do
-            {
-                
-                data = Console.ReadLine();
-                foreach (var file in Dir.GetDirectories())
-                {
+#endif
 
-                    Console.WriteLine(file);
-
-                }
-            } while (true);
-            
-
-    */
+        /* */
 
     }
 }
