@@ -1,11 +1,8 @@
-Hola soy kevin;
-ssssssssssssssssssssssssssss
-ssssssssssss
-sssssssssssss
-sssssssssssssss
-ssssssssss
-ssssssssssss
-sssssssssss
-ssssssssssss
-ssssssssssssssss
-ssssssssssssssss
+
+Listar		Lista el nombre de las carpetas y archivos
+ver		Muestra el sistema operativo en el que corre 	
+ayuda		Lista la descripcion de los comandos	
+Limpiar		Limpia la consola
+Explorador		Abre el explorador de Windows
+Terminal		Pone la consola de color azul
+Abrir

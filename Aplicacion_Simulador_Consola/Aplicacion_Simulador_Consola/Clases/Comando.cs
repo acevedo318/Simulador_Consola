@@ -127,7 +127,7 @@ namespace Aplicacion_Simulador_Consola.Clases
             if (opciones == "consolaColor")
             {
                 Console.BackgroundColor = ConsoleColor.Blue;
-                Limpiar(null);
+                Limpiar(data);
             }
             else
             {
