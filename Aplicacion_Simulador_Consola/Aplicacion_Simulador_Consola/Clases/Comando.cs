@@ -144,9 +144,7 @@ namespace Aplicacion_Simulador_Consola.Clases
 
         public void ayuda(string[] data)
         {
-            StreamReader objReader = new StreamReader(Application.StartupPath);
-            string sLine = "";
-            sLine = objReader.ReadToEnd();
+            string sLine = ""+Properties.Resources.help;
             Console.WriteLine(sLine);
         }
 
