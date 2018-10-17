@@ -84,7 +84,10 @@ namespace Aplicacion_Simulador_Consola.Clases
             }
             
         }
-
+        /// <summary>
+        /// Limpia la consola
+        /// </summary>
+        /// <param name="data"></param>
         public void Limpiar(string[] data)
         {
             if (data.Count()>1)
@@ -142,10 +145,40 @@ namespace Aplicacion_Simulador_Consola.Clases
             Console.ResetColor();
         }
 
+        /// <summary>
+        /// Lista la data de ayuda
+        /// </summary>
+        /// <param name="data"></param>
         public void ayuda(string[] data)
         {
-            string sLine = ""+Properties.Resources.help;
-            Console.WriteLine(sLine);
+            if (data.Count() > 1)
+            {
+                ComandoInvalido(data[0]);
+            }
+            else{
+                string sLine = "" + Properties.Resources.help;
+                Console.WriteLine(sLine);
+            }
+            
+        }
+        /// <summary>
+        /// muestra el sistema operativo
+        /// </summary>
+        /// <param name="data">Los datos que se necesita para funcionar</param>
+        public void ver(string[] data)
+        {
+            if (data.Count() > 1)
+            {
+                ComandoInvalido(data[0]);
+            }
+            else{
+
+                Console.WriteLine("Corriendo en Sistema Operativo " + Environment.OSVersion.ToString());
+                Console.WriteLine();
+                Console.WriteLine("Terminal VladeDesigners");
+                Console.WriteLine("2018");
+                Console.WriteLine();
+            }
         }
 
         /// <summary>

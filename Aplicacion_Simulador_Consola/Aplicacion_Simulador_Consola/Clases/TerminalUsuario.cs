@@ -72,11 +72,6 @@ namespace Aplicacion_Simulador_Consola.Clases
             } while (!salir);
 
         }
-#if true
-        
-#endif
-
-        /* */
 
     }
 }
