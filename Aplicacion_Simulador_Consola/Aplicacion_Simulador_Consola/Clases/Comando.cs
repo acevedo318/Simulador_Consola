@@ -109,7 +109,7 @@ namespace Aplicacion_Simulador_Consola.Clases
                 if (data[1] == "volver")
                 {
                     DirectoryInfo info = new DirectoryInfo(this.directorioLocal);
-                    
+                    Console.WriteLine(info.FullName);
                 }
             }
             else
@@ -180,6 +180,8 @@ namespace Aplicacion_Simulador_Consola.Clases
                 Console.WriteLine();
             }
         }
+
+      
 
         /// <summary>
         /// funcion de Listar
